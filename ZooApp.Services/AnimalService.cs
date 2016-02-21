@@ -11,7 +11,7 @@ namespace ZooApp.Services
     {
         //create a _db object 
         private readonly ZooContext _db = new ZooContext();
-        public List<ViewAnimal> GetAnimals()
+        public List<ViewAnimal> GetAll()
         {
 
             //featch _db.animal data
@@ -33,7 +33,7 @@ namespace ZooApp.Services
             return viewAnimals;
         }
 
-        public ViewAnimal GetAnimal(int id)
+        public ViewAnimal Get(int id)
         {
             Animal animal = _db.Animals.Find(id);
             return new ViewAnimal()
@@ -68,7 +68,7 @@ namespace ZooApp.Services
             return true;
         }
 
-        public Animal GetDbAnimal(int id)
+        public Animal GetDbModel(int id)
         {
             Animal animal = _db.Animals.Find(id);
             return animal;
