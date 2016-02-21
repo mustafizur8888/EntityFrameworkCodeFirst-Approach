@@ -57,7 +57,7 @@ namespace ZooApp.MvcClient.Controllers
         public ActionResult Delete(Animal animal)
         {
             //Save
-            bool save = service.Delete(animal);
+            var save = service.Delete(animal);
             return RedirectToAction("Index");
         }
     }
