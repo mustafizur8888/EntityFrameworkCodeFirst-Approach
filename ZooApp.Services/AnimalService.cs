@@ -11,6 +11,8 @@ namespace ZooApp.Services
     {
         //create a _db object 
         private readonly ZooContext _db = new ZooContext();
+
+        
         public List<ViewAnimal> GetAll()
         {
 
@@ -21,12 +23,8 @@ namespace ZooApp.Services
             List<ViewAnimal> viewAnimals = new List<ViewAnimal>();
             foreach (Animal animal in animals)
             {
-                ViewAnimal viewAnimal = new ViewAnimal()
-                {
-                    Id = animal.Id,
-                    Origin = animal.Origin,
-                    Name = animal.Name
-                };
+                ViewAnimal viewAnimal = new ViewAnimal(animal);
+                
                 viewAnimals.Add(viewAnimal);
             }
             //return
@@ -36,12 +34,8 @@ namespace ZooApp.Services
         public ViewAnimal Get(int id)
         {
             Animal animal = _db.Animals.Find(id);
-            return new ViewAnimal()
-            {
-                Id = animal.Id,
-                Name = animal.Name,
-                Origin = animal.Origin
-            };
+            return new ViewAnimal(animal);
+
 
 
         }

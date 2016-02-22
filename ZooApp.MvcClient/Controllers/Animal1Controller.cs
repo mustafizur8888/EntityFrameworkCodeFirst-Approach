@@ -25,14 +25,25 @@ namespace ZooApp.MvcClient.Controllers
         {
             return View();
         }
-
-        [HttpPost]
-        public ActionResult Creat(Animal animal)
+        public ActionResult Create(Animal animal)
         {
-            //Save
-            bool save = service.Save(animal);
-            return RedirectToAction("Index");
+            try
+            {
+                // TODO: Add insert logic here
+                var save = service.Save(animal);
+                if (save)
+                {
+                    return RedirectToAction("Index");
+                }
+                return View(animal);
+
+            }
+            catch
+            {
+                return View(animal);
+            }
         }
+       
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -48,9 +59,10 @@ namespace ZooApp.MvcClient.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public ActionResult Delete()
+        public ActionResult Delete(int Id)
         {
-            return View();
+           
+            return View( service.GetDbModel(Id));
         }
 
         [HttpPost]
