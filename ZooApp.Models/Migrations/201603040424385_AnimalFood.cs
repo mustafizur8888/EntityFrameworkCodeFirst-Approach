@@ -45,10 +45,10 @@ namespace ZooApp.Models.Migrations
             DropForeignKey("dbo.AnimalFoods", "FoodId", "dbo.Foods");
             DropForeignKey("dbo.AnimalFoods", "AnimalId", "dbo.Animals");
             DropIndex("dbo.Foods", "Ix_FoodName");
-            DropIndex("dbo.AnimalFoods", new[] { "FoodId" });
-            DropIndex("dbo.AnimalFoods", new[] { "AnimalId" });
             DropIndex("dbo.Animals", "Ix_AnimalOrigin");
             DropIndex("dbo.Animals", "Ix_AnimalName");
+            DropIndex("dbo.AnimalFoods", new[] { "FoodId" });
+            DropIndex("dbo.AnimalFoods", new[] { "AnimalId" });
             AlterColumn("dbo.Animals", "Origin", c => c.String());
             AlterColumn("dbo.Animals", "Name", c => c.String());
             DropTable("dbo.Foods");

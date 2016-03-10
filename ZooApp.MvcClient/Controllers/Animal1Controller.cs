@@ -55,21 +55,22 @@ namespace ZooApp.MvcClient.Controllers
         public ActionResult Edit(Animal animal)
         {
             //Save
-            bool save = service.Update(animal);
+            service.Update(animal);
             return RedirectToAction("Index");
         }
+
         [HttpGet]
-        public ActionResult Delete(int Id)
+        public ActionResult Delete(int id)
         {
            
-            return View( service.GetDbModel(Id));
+            return View( service.GetDbModel(id));
         }
 
         [HttpPost]
         public ActionResult Delete(Animal animal)
         {
             //Save
-            var save = service.Delete(animal);
+            service.Delete(animal);
             return RedirectToAction("Index");
         }
     }
